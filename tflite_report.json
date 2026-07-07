@@ -1,0 +1,9 @@
+{
+  "source_model": "/Users/yuanjunhao/Desktop/project_data/tf_digit_cnn_best.keras",
+  "inference_keras": "/Users/yuanjunhao/Desktop/project_data/digit_cnn_inference.keras",
+  "tflite_model": "/Users/yuanjunhao/Desktop/project_data/digit_cnn.tflite",
+  "tflite_size_bytes": 176344,
+  "validation_accuracy": 0.999,
+  "input": "float32 shape [1,28,28,1], pixel = 1 - normalized_gray",
+  "output": "float32 probabilities for digits 0-9"
+}
