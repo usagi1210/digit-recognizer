@@ -1,0 +1,29 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.vscode/
+
+# Local datasets and labels
+dataset/
+mydata/
+mydata_augmented/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.tif
+*.tiff
+*.txt
+!requirements.txt
+*.npz
+*.zip
+
+# Training/build outputs that are regenerated locally
+dist/
+build/
+.pyinstaller_cache/
+*.spec
+*.keras
+tf_training_log.csv
+tf_confusion_matrix.npy
