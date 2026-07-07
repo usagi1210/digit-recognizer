@@ -7,6 +7,8 @@ from pathlib import Path
 
 import ai_edge_litert
 
+from model_assets import ensure_model_file
+
 
 ROOT = Path(__file__).resolve().parent
 APP = ROOT / "digit_gui.py"
@@ -17,8 +19,7 @@ NAME = "DigitRecognizer"
 def main() -> None:
     if not APP.exists():
         raise FileNotFoundError(APP)
-    if not MODEL.exists():
-        raise FileNotFoundError(MODEL)
+    ensure_model_file(MODEL)
 
     separator = ";" if os.name == "nt" else ":"
     package_dir = Path(ai_edge_litert.__file__).resolve().parent
@@ -42,6 +43,9 @@ def main() -> None:
         "--hidden-import",
         "ai_edge_litert.metrics_portable",
     ]
+    parts_dir = ROOT / "model_parts"
+    if parts_dir.exists():
+        command.extend(["--add-data", f"{parts_dir}{separator}model_parts"])
     binary_exts = {".so", ".pyd", ".dll", ".dylib"}
     for binary in sorted(package_dir.iterdir()):
         if binary.suffix.lower() in binary_exts:
