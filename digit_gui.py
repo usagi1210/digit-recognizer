@@ -12,6 +12,8 @@ from PIL import Image, ImageOps
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
+from model_assets import MODEL_NAME, ensure_model_file, resource_path
+
 try:
     from ai_edge_litert.interpreter import Interpreter
 except ImportError:  # pragma: no cover - useful when running outside the bundled app env.
@@ -19,12 +21,6 @@ except ImportError:  # pragma: no cover - useful when running outside the bundle
 
 
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
-MODEL_FILE = "digit_cnn.tflite"
-
-
-def resource_path(relative_path: str) -> Path:
-    base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
-    return base / relative_path
 
 
 def preprocess_image(path: Path) -> np.ndarray:
@@ -61,7 +57,7 @@ def label_from_path(path: Path, root: Path) -> int | None:
 
 
 def run_self_test(folder: Path) -> int:
-    classifier = DigitClassifier(resource_path(MODEL_FILE))
+    classifier = DigitClassifier(ensure_model_file())
     images = list(iter_images(folder))
     if not images:
         print(f"no images found: {folder}")
@@ -125,7 +121,7 @@ class App(tk.Tk):
         self.geometry("820x560")
         self.minsize(720, 480)
 
-        self.classifier = DigitClassifier(resource_path(MODEL_FILE))
+        self.classifier = DigitClassifier(ensure_model_file(resource_path(MODEL_NAME)))
         self.last_results: list[Prediction] = []
 
         self._build_widgets()
