@@ -1,0 +1,27 @@
+{
+  "seed": 20260706,
+  "framework": "tensorflow",
+  "tensorflow_version": "2.21.0",
+  "dataset": "/Users/yuanjunhao/Desktop/project_data/mydata_augmented_normalized.npz",
+  "train_shape": [
+    4000,
+    28,
+    28,
+    1
+  ],
+  "val_shape": [
+    1000,
+    28,
+    28,
+    1
+  ],
+  "train_per_class": 400,
+  "val_per_class": 100,
+  "best_val_accuracy": 0.9990000128746033,
+  "final_val_accuracy": 0.9990000128746033,
+  "final_val_loss": 0.08349583297967911,
+  "model_path": "/Users/yuanjunhao/Desktop/project_data/tf_digit_cnn.keras",
+  "best_model_path": "/Users/yuanjunhao/Desktop/project_data/tf_digit_cnn_best.keras",
+  "confusion_matrix_path": "/Users/yuanjunhao/Desktop/project_data/tf_confusion_matrix.npy",
+  "notes": "Input pixels are 1 - normalized grayscale, so background=0 and ink=1."
+}
