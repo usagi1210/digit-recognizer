@@ -1,0 +1,4 @@
+ai-edge-litert
+numpy
+Pillow
+pyinstaller
